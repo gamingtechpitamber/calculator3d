@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Calculator 3d · Sound & Vibe</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: #142034;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 4px;
+            margin: 0;
+        }
+        .calculator {
+            max-width: 420px;
+            width: 100%;
+            background: #1e232c;
+            border-radius: 10px 10px 10px 10px;
+            padding: 10px 10px 10px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.08);
+            transition: background 0.2s;
+        }
+        .top-row {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 0 4px;
+            position: relative;
+        }
+        .menu-icon {
+            font-size: 30px;
+            line-height: 1;
+            padding: 8px 6px 8px 4px;
+            cursor: pointer;
+            color: #EE3FD7;
+            background: #1EEE22;
+            border-radius: 10px;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 0 #0f1217, 0 6px 10px rgba(0,0,0,0.4);
+            transition: 0.06s linear;
+            font-weight: 600;
+        }
+        .menu-icon:active { transform: translateY(3px); box-shadow: 0 1px 0 #0f1217; }
+        .calc-3d-title {
+            font-size: 48px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            color: #E6F527;
+            text-shadow: 1px 1px 0 #871f1f, 2px 1px 0 #E6F527, 0 1px 1px rgba(0,0,0,0.5);
+            transform: skewX(-4deg) scale(1.02);
+            padding-left: 1px;
+            flex: 1;
+            font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
+        }
+        .display-box {
+            background: #17231c;
+            border-radius: 10px;
+            padding: 9px 9px 9px;
+            margin-bottom: 35px;
+            box-shadow: inset 0 0 0 2px #3d6b4f, inset 0 0 20px #2b7a4a, 0 6px 0 #0b130e;
+            border: 1px solid #5a9e72;
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        #displayTop {
+            background: transparent;
+            border: none;
+            width: 100%;
+            font-size: 20px;
+            font-weight: 600;
+            color: #8fc9a0;
+            text-align: left;
+            outline: none;
+            letter-spacing: 0.5px;
+            min-height: 28px;
+            padding: 2px 0;
+            border-bottom: 2px solid #3a7a4f;
+            text-shadow: 0 0 6px #1f7a3a;
+        }
+        #displayBottom {
+            background: transparent;
+            border: none;
+            width: 100%;
+            font-size: 55px;
+            font-weight: 700;
+            color: #b3f0c0;
+            text-align: right;
+            outline: none;
+            letter-spacing: 1px;
+            text-shadow: 0 0 5px #1f9e4a;
+            min-height: 44px;
+            padding: 4px 0 0;
+        }
+        .mem-row {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            margin-bottom: 2px;
+        }
+        .mem-btn {
+            background: #3a8cb0;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 0;
+            font-size: 20px;
+            font-weight: 700;
+            color: #f0f9ff;
+            box-shadow: 0 2px 0 #1d4b62, 0 2px 6px rgba(0,0,0,0.3);
+            transition: 0.04s linear;
+            text-shadow: 0 1px 2px #0f2d3b;
+            letter-spacing: 0.5px;
+        }
+        .mem-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1d4b62; }
+        .grid-buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 9px;
+            margin-top: 15px;
+        }
+        .btn {
+            border: none;
+            border-radius: 10px;
+            padding: 15px 0;
+            font-size: 26px;
+            font-weight: 600;
+            background: #2d3645;
+            color: #dce3ed;
+            box-shadow: 0 2px 0 #141a24, 0 2px 12px rgba(0,0,0,0.3);
+            transition: 0.04s linear;
+            text-align: center;
+            cursor: pointer;
+        }
+        .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #141a24; }
+        .btn-pink { background: #d06b8e; color: #fff4f8; box-shadow: 0 4px 0 #7f3e57; }
+        .btn-pink:active { box-shadow: 0 1px 0 #7f3e57; }
+        .btn-red { background: #c94f4f; color: white; box-shadow: 0 4px 0 #792b2b; }
+        .btn-red:active { box-shadow: 0 1px 0 #792b2b; }
+        .btn-blue { background: #4d8fc5; color: white; box-shadow: 0 4px 0 #235183; }
+        .btn-blue:active { box-shadow: 0 1px 0 #235183; }
+        .btn-green { background: #3f9e6d; color: white; box-shadow: 0 4px 0 #1f5a3d; }
+        .btn-green:active { box-shadow: 0 1px 0 #1f5a3d; }
+        .btn-equal { background: #c96f8f; color: white; box-shadow: 0 4px 0 #7a4057; }
+        .btn-equal:active { box-shadow: 0 1px 0 #7a4057; }
+        .btn-cut { background: #b08bbd; color: #1f1a26; box-shadow: 0 4px 0 #6c4d7a; }
+        .btn-cut:active { box-shadow: 0 1px 0 #6c4d7a; }
+        .span2 { grid-column: span 2; }
+        .menu-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            z-index: 999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+        }
+        .menu-panel {
+            background: #222a36;
+            max-width: 380px;
+            width: 100%;
+            border-radius: 10px;
+            padding: 14px 14px;
+            box-shadow: 0 10px 40px black;
+            color: #ecf0f5;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+        .menu-item {
+            background: #2e3848;
+            border-radius: 6px;
+            padding: 14px 14px;
+            margin: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 20px;
+            font-weight: 500;
+            box-shadow: inset 0 2px 4px rgba(255,255,255,0.05), 0 4px 0 #131b24;
+            transition: 0.06s linear;
+            cursor: pointer;
+        }
+        .menu-item:active { transform: translateY(3px); box-shadow: 0 1px 0 #131b24; }
+        .menu-item span { flex: 1; }
+        .theme-row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
+            margin: 5px 0 8px;
+            justify-items: center;
+        }
+        .theme-dot {
+            width: 44px;
+            height: 44px;
+            border-radius: 6px;
+            box-shadow: 0 4px 0 #0f1217;
+            cursor: pointer;
+            border: 2px solid #4d5a70;
+            transition: 0.1s;
+        }
+        .theme-dot:active { transform: scale(0.9); }
+        .gradient-box {
+            width: 100%;
+            height: 20px;
+            border-radius: 6px;
+            background: linear-gradient(90deg, #ff7eb3, #ff758c, #f5b8ea, #7f7fd5);
+            margin: 8px 0 8px;
+            box-shadow: 0 4px 0 #1f1f2a;
+            cursor: pointer;
+            border: 2px solid #4d5a70;
+        }
+        .color-slider {
+            width: 100%;
+            margin: 16px 0 6px;
+            accent-color: #b0c7e0;
+            height: 10px;
+            border-radius: 10px;
+        }
+        .history-list {
+            max-height: 240px;
+            overflow-y: auto;
+            margin: 10px 0;
+            background: #1b222e;
+            border-radius: 30px;
+            padding: 8px 4px;
+        }
+        .history-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 12px;
+            background: #293242;
+            border-radius: 40px;
+            margin: 6px 0;
+            font-size: 18px;
+            gap: 6px;
+        }
+        .history-entry .expr { flex:1; font-weight: 500; color: #cbd5e6; cursor: pointer; }
+        .history-entry .del { color: #ec7a7a; font-weight: bold; padding: 0 8px; font-size: 22px; cursor: pointer; }
+        .history-entry .cut { color: #f3b37a; padding: 0 8px; font-size: 22px; cursor: pointer; }
+        .history-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; align-items: center; }
+        .history-actions button {
+            background: #3b475c;
+            border: none;
+            border-radius: 40px;
+            padding: 8px 18px;
+            color: white;
+            font-weight: 600;
+            box-shadow: 0 3px 0 #1d2532;
+            cursor: pointer;
+        }
+        .history-actions button:active { transform: translateY(2px); box-shadow: 0 1px 0 #1d2532; }
+        .close-menu {
+            background: #a05b5b;
+            border: none;
+            padding: 12px;
+            border-radius: 60px;
+            width: 100%;
+            font-size: 22px;
+            font-weight: 700;
+            color: white;
+            box-shadow: 0 5px 0 #582f2f;
+            margin-top: 12px;
+            cursor: pointer;
+        }
+        .close-menu:active { transform: translateY(3px); box-shadow: 0 1px 0 #582f2f; }
+        .toggle-indicator { background: #485671; border-radius: 40px; padding: 2px 16px; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #1a212b; }
+        ::-webkit-scrollbar-thumb { background: #60758b; border-radius: 10px; }
+
+        /* Landscape mode - taller, rectangular buttons, increased height */
+        @media (orientation: landscape) and (max-height: 700px) {
+            body {
+                padding: 0;
+                align-items: stretch;
+                background: #0c0f14;
+            }
+            .calculator {
+                max-width: 100%;
+                max-height: 100vh;
+                border-radius: 8px;
+                padding: 4px 20px 8px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                margin: 0 auto;
+                width: 38%;
+                margin-left: 35%;
+                margin-right: 35%;
+                height: 100vh;
+                box-shadow: none;
+                background: #1e232c;
+            }
+            .top-row {
+                margin-bottom: 6px;
+                gap: 6px;
+                padding: 2px 8px;
+                background: rgba(30, 35, 44, 0.5);
+                border-radius: 10px;
+            }
+            .calc-3d-title {
+                font-size: 15px;
+                text-shadow: 1px 1px 0 #871f1f, 2px 2px 0 #4f1010, 0 3px 6px rgba(0,0,0,0.5);
+                padding-left: 2px;
+                letter-spacing: 0.5px;
+            }
+            .menu-icon {
+                width: 28px;
+                height: 28px;
+                font-size: 14px;
+                border-radius: 8px;
+                box-shadow: 0 2px 0 #0f1217, 0 3px 6px rgba(0,0,0,0.4);
+                padding: 4px;
+            }
+            .menu-icon:active {
+                transform: translateY(2px);
+                box-shadow: 0 1px 0 #0f1217;
+            }
+            .display-box {
+                min-height: 55px;
+                padding: 3px 12px 2px;
+                margin-bottom: 6px;
+                border-radius: 10px;
+                box-shadow: inset 0 0 0 2px #3d6b4f, inset 0 0 14px #2b7a4a, 0 3px 0 #0b130e;
+            }
+            #displayTop {
+                font-size: 4px;
+                min-height: 15px;
+                padding: 1px 0;
+                border-bottom: 1.5px solid #3a7a4f;
+            }
+            #displayBottom {
+                font-size: 20px;
+                min-height: 24px;
+                padding: 2px 0 0;
+            }
+            .mem-row {
+                gap: 4px;
+                margin-bottom: 4px;
+            }
+            .mem-btn {
+                padding: 4px 0;
+                font-size: 11px;
+                border-radius: 6px;
+                box-shadow: 0 2px 0 #1d4b62, 0 3px 6px rgba(0,0,0,0.3);
+            }
+            .mem-btn:active {
+                transform: translateY(2px);
+                box-shadow: 0 1px 0 #1d4b62;
+            }
+            .grid-buttons {
+                gap: 4px;
+                margin-top: 4px;
+            }
+            .btn {
+                padding: 8px 0;
+                font-size: 14px;
+                border-radius: 4px;
+                box-shadow: 0 2px 0 #141a24, 0 3px 6px rgba(0,0,0,0.3);
+            }
+            .btn:active {
+                transform: translateY(2px);
+                box-shadow: 0 1px 0 #141a24;
+            }
+            .btn-equal {
+                font-size: 16px;
+            }
+            .span2 {
+                grid-column: span 2;
+            }
+            .btn-pink { box-shadow: 0 2px 0 #7f3e57, 0 3px 6px rgba(0,0,0,0.3); }
+            .btn-red { box-shadow: 0 2px 0 #792b2b, 0 3px 6px rgba(0,0,0,0.3); }
+            .btn-blue { box-shadow: 0 2px 0 #235183, 0 3px 6px rgba(0,0,0,0.3); }
+            .btn-green { box-shadow: 0 2px 0 #1f5a3d, 0 3px 6px rgba(0,0,0,0.3); }
+            .btn-equal { box-shadow: 0 2px 0 #7a4057, 0 3px 6px rgba(0,0,0,0.3); }
+            .btn-cut { box-shadow: 0 2px 0 #6c4d7a, 0 3px 6px rgba(0,0,0,0.3); }
+            .btn-pink:active { box-shadow: 0 1px 0 #7f3e57; }
+            .btn-red:active { box-shadow: 0 1px 0 #792b2b; }
+            .btn-blue:active { box-shadow: 0 1px 0 #235183; }
+            .btn-green:active { box-shadow: 0 1px 0 #1f5a3d; }
+            .btn-equal:active { box-shadow: 0 1px 0 #7a4057; }
+            .btn-cut:active { box-shadow: 0 1px 0 #6c4d7a; }
+        }
+
+        /* Slightly larger landscape screens */
+        @media (orientation: landscape) and (min-height: 701px) and (max-height: 900px) {
+            .calculator {
+                padding: 8px 24px 12px;
+                width: 34%;
+                margin-left: 33%;
+                margin-right: 33%;
+                border-radius: 16px;
+                height: 96vh;
+            }
+            .top-row {
+                margin-bottom: 8px;
+                gap: 6px;
+                background: rgba(30, 35, 44, 0.4);
+                border-radius: 12px;
+                padding: 3px 12px;
+            }
+            .calc-3d-title {
+                font-size: 18px;
+            }
+            .menu-icon {
+                width: 34px;
+                height: 34px;
+                font-size: 18px;
+            }
+            .display-box {
+                min-height: 64px;
+                padding: 5px 14px 3px;
+                margin-bottom: 8px;
+            }
+            #displayBottom {
+                font-size: 26px;
+            }
+            .btn {
+                padding: 10px 0;
+                font-size: 18px;
+                border-radius: 6px;
+            }
+            .mem-btn {
+                padding: 6px 0;
+                font-size: 13px;
+            }
+        }
+
+        /* Extra tall landscape */
+        @media (orientation: landscape) and (min-height: 901px) {
+            .calculator {
+                padding: 12px 30px 16px;
+                width: 30%;
+                margin-left: 35%;
+                margin-right: 35%;
+                border-radius: 20px;
+                height: 97vh;
+            }
+            .top-row {
+                margin-bottom: 10px;
+                background: rgba(30, 35, 44, 0.3);
+                border-radius: 14px;
+                padding: 4px 14px;
+            }
+            .calc-3d-title {
+                font-size: 22px;
+            }
+            .display-box {
+                min-height: 76px;
+            }
+            #displayBottom {
+                font-size: 32px;
+            }
+            .btn {
+                padding: 14px 0;
+                font-size: 22px;
+                border-radius: 8px;
+            }
+            .mem-btn {
+                padding: 8px 0;
+                font-size: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="calculator" id="calcApp">
+    <div class="top-row">
+        <div class="menu-icon" id="menuIcon">☰</div>
+        <div class="calc-3d-title">calculator3d</div>
+    </div>
+
+    <div class="display-box">
+        <input type="text" id="displayTop" placeholder="expression" readonly>
+        <input type="text" id="displayBottom" value="0" readonly>
+    </div>
+
+    <div class="mem-row">
+        <button class="mem-btn" data-action="mc">MC</button>
+        <button class="mem-btn" data-action="m+">M+</button>
+        <button class="mem-btn" data-action="m-">M−</button>
+        <button class="mem-btn" data-action="mr">MR</button>
+    </div>
+
+    <div class="grid-buttons">
+        <!-- row 1: C, ±, ( ), % -->
+        <button class="btn btn-red" data-action="clear">C</button>
+        <button class="btn btn-blue" data-action="sign">±</button>
+        <button class="btn btn-pink" data-action="paren">( )</button>
+        <button class="btn btn-pink" data-action="percent">%</button>
+
+        <!-- row 2: 7,8,9, ÷ -->
+        <button class="btn btn-green" data-action="7">7</button>
+        <button class="btn btn-green" data-action="8">8</button>
+        <button class="btn btn-green" data-action="9">9</button>
+        <button class="btn btn-pink" data-action="divide">÷</button>
+
+        <!-- row 3: 4,5,6, × -->
+        <button class="btn btn-green" data-action="4">4</button>
+        <button class="btn btn-green" data-action="5">5</button>
+        <button class="btn btn-green" data-action="6">6</button>
+        <button class="btn btn-pink" data-action="multiply">×</button>
+
+        <!-- row 4: 1,2,3, − -->
+        <button class="btn btn-green" data-action="1">1</button>
+        <button class="btn btn-green" data-action="2">2</button>
+        <button class="btn btn-green" data-action="3">3</button>
+        <button class="btn btn-pink" data-action="subtract">−</button>
+
+        <!-- row 5: 0, ., ✂, + -->
+        <button class="btn btn-green" data-action="0">0</button>
+        <button class="btn btn-green" data-action="dot">.</button>
+        <button class="btn btn-cut" data-action="cut">✂</button>
+        <button class="btn btn-pink" data-action="add">+</button>
+
+        <!-- row 6: = (span 2, right) -->
+        <button class="btn btn-equal span2" data-action="equals" style="grid-column: 3 / 5;">=</button>
+    </div>
+</div>
+
+<!-- menu overlay -->
+<div class="menu-overlay" id="menuOverlay">
+    <div class="menu-panel">
+        <div class="menu-item" id="settingSound">
+            <span>🔊 Sound</span>
+            <span class="toggle-indicator" id="soundToggle">ON</span>
+        </div>
+        <div class="menu-item" id="settingVibration">
+            <span>📳 Vibration</span>
+            <span class="toggle-indicator" id="vibeToggle">ON</span>
+        </div>
+        <div class="menu-item" id="themeMenu">
+            <span>🎨 Theme</span>
+            <span style="font-size:24px;">▶</span>
+        </div>
+        <div id="themeOptions" style="display:none;">
+            <div class="theme-row" id="themeGrid"></div>
+            <div class="gradient-box" id="gradientThemeBox"></div>
+            <input type="range" class="color-slider" id="themeSlider" min="0" max="360" value="0">
+        </div>
+        <div class="menu-item" id="historyMenu">
+            <span>📜 History</span>
+            <span style="font-size:24px;">▶</span>
+        </div>
+        <div id="historyPanel" style="display:none;">
+            <div class="history-actions">
+                <button id="selectAllHistory">☑ Select all</button>
+                <button id="deleteSelectedHistory">🗑 Delete selected</button>
+                <button id="deleteAllHistory">🗑 Delete all</button>
+            </div>
+            <div class="history-list" id="historyList"></div>
+        </div>
+        <button class="close-menu" id="closeMenu">✕ Close</button>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const displayTop = document.getElementById('displayTop');
+        const displayBottom = document.getElementById('displayBottom');
+        let expression = '';
+        let memory = 0;
+        let history = JSON.parse(localStorage.getItem('calcHistory')) || [];
+        let soundEnabled = true;
+        let vibrationEnabled = true;
+
+        let audioCtx = null;
+        function playBubble() {
+            if (!soundEnabled) return;
+            try {
+                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.value = 720 + Math.random() * 180;
+                osc.type = 'sine';
+                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+                osc.start();
+                osc.stop(audioCtx.currentTime + 0.08);
+            } catch(e) {}
+        }
+
+        function vibrate() {
+            if (vibrationEnabled && navigator.vibrate) navigator.vibrate(10);
+        }
+
+        function updateDisplay() {
+            displayTop.value = expression || '';
+            if (expression) {
+                displayBottom.value = expression;
+            } else {
+                displayBottom.value = '0';
+            }
+        }
+
+        function saveHistory() {
+            localStorage.setItem('calcHistory', JSON.stringify(history));
+        }
+
+        function addHistory(expr, result) {
+            history.unshift({ expr, result });
+            if (history.length > 80) history.pop();
+            saveHistory();
+        }
+
+        function evaluateExpression(expr) {
+            if (!expr) return null;
+            
+            let sanitized = expr
+                .replace(/×/g, '*')
+                .replace(/÷/g, '/')
+                .replace(/−/g, '-')
+                .replace(/(\d+\.?\d*)%/g, (match, num) => `(${num}/100)`);
+
+            let trimmed = sanitized.replace(/[+\-*/]+$/, '');
+            if (trimmed !== sanitized) {
+                sanitized = trimmed;
+            }
+
+            try {
+                const result = Function('"use strict"; return (' + sanitized + ')')();
+                if (typeof result === 'number' && isFinite(result)) return result;
+                return null;
+            } catch(e) {
+                return null;
+            }
+        }
+
+        function handleAction(action) {
+            if (action === 'clear') {
+                expression = '';
+                displayTop.value = '';
+                displayBottom.value = '0';
+                return;
+            }
+            if (action === 'sign') {
+                if (expression.startsWith('-')) expression = expression.slice(1);
+                else expression = '-' + expression;
+                updateDisplay();
+                return;
+            }
+            if (action === 'percent') {
+                expression += '%';
+                updateDisplay();
+                return;
+            }
+            if (action === 'paren') {
+                const open = (expression.match(/\(/g) || []).length;
+                const close = (expression.match(/\)/g) || []).length;
+                expression += open <= close ? '(' : ')';
+                updateDisplay();
+                return;
+            }
+            if (action === 'cut') {
+                expression = expression.slice(0, -1);
+                updateDisplay();
+                return;
+            }
+            if (action === 'dot') {
+                const lastNum = expression.split(/[\+\-\*\/\(\)]/).pop();
+                if (lastNum && lastNum.includes('.')) return;
+                expression += '.';
+                updateDisplay();
+                return;
+            }
+            if (action === 'equals') {
+                const result = evaluateExpression(expression);
+                if (result !== null && isFinite(result)) {
+                    const histExpr = expression;
+                    expression = result.toString();
+                    displayTop.value = histExpr + ' =';
+                    displayBottom.value = result.toString();
+                    addHistory(histExpr, result);
+                } else {
+                    displayBottom.value = 'Error';
+                    setTimeout(() => {
+                        displayBottom.value = expression || '0';
+                    }, 600);
+                }
+                return;
+            }
+            const ops = ['add','subtract','multiply','divide'];
+            if (ops.includes(action)) {
+                const map = { add:'+', subtract:'−', multiply:'×', divide:'÷' };
+                const lastChar = expression.slice(-1);
+                if (['+','−','×','÷'].includes(lastChar)) {
+                    expression = expression.slice(0, -1) + map[action];
+                } else {
+                    expression += map[action];
+                }
+                updateDisplay();
+                return;
+            }
+            if (/^[0-9]$/.test(action)) {
+                expression += action;
+                updateDisplay();
+                return;
+            }
+        }
+
+        function memoryAction(cmd) {
+            const val = parseFloat(expression);
+            if (cmd === 'mc') { memory = 0; return; }
+            if (cmd === 'mr') { expression = memory.toString(); updateDisplay(); return; }
+            if (cmd === 'm+') { if (!isNaN(val)) memory += val; return; }
+            if (cmd === 'm-') { if (!isNaN(val)) memory -= val; return; }
+        }
+
+        function renderHistory() {
+            const container = document.getElementById('historyList');
+            if (!container) return;
+            container.innerHTML = '';
+            history.forEach((item, idx) => {
+                const div = document.createElement('div');
+                div.className = 'history-entry';
+                div.innerHTML = `
+                    <input type="checkbox" class="history-check" data-idx="${idx}">
+                    <span class="expr">${item.expr} = ${item.result}</span>
+                    <span class="cut" data-idx="${idx}">✂</span>
+                    <span class="del" data-idx="${idx}">✕</span>
+                `;
+                div.querySelector('.expr').addEventListener('click', () => {
+                    expression = item.result.toString();
+                    displayTop.value = item.expr + ' =';
+                    displayBottom.value = item.result.toString();
+                    closeMenu();
+                });
+                div.querySelector('.cut').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    history.splice(idx, 1);
+                    saveHistory();
+                    renderHistory();
+                });
+                div.querySelector('.del').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    history.splice(idx, 1);
+                    saveHistory();
+                    renderHistory();
+                });
+                container.appendChild(div);
+            });
+            document.getElementById('selectAllHistory').onclick = () => {
+                document.querySelectorAll('.history-check').forEach(cb => cb.checked = true);
+            };
+            document.getElementById('deleteSelectedHistory').onclick = () => {
+                const checks = document.querySelectorAll('.history-check:checked');
+                const indices = Array.from(checks).map(cb => parseInt(cb.dataset.idx)).sort((a,b)=>b-a);
+                indices.forEach(i => history.splice(i,1));
+                saveHistory();
+                renderHistory();
+            };
+            document.getElementById('deleteAllHistory').onclick = () => {
+                history = [];
+                saveHistory();
+                renderHistory();
+            };
+        }
+
+        const overlay = document.getElementById('menuOverlay');
+        function openMenu() { overlay.style.display = 'flex'; renderHistory(); }
+        function closeMenu() { overlay.style.display = 'none'; }
+
+        document.getElementById('menuIcon').addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
+        document.getElementById('closeMenu').addEventListener('click', closeMenu);
+        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
+
+        document.getElementById('settingSound').addEventListener('click', function(e) {
+            e.stopPropagation();
+            soundEnabled = !soundEnabled;
+            document.getElementById('soundToggle').innerText = soundEnabled ? 'ON' : 'OFF';
+        });
+        document.getElementById('settingVibration').addEventListener('click', function(e) {
+            e.stopPropagation();
+            vibrationEnabled = !vibrationEnabled;
+            document.getElementById('vibeToggle').innerText = vibrationEnabled ? 'ON' : 'OFF';
+        });
+
+        document.getElementById('themeMenu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const opt = document.getElementById('themeOptions');
+            opt.style.display = opt.style.display === 'none' ? 'block' : 'none';
+        });
+
+        const themeColors = [
+            '#1e232c','#2b2b2b','#3a3a3a','#5a5a5a','#0d3b4f',
+            '#3b2b2b','#2e3b2b','#4a2b4a','#1a3a3a','#3a1a2a',
+            '#f0f0f0','#d0d0d0','#b0b0b0','#a0c0d0','#b0d0b0',
+            '#d0b0b0','#d0a0b0','#c0b0a0','#90b0c0','#b0b0c0',
+            '#ffffff','#808080','#c0c0c0','#90d0a0','#80b0d0',
+            '#d08080','#d0a0b0','#e0d0c0','#D5E415',  '#1BE132', '#1A24F0', '#EC19D9', '#F70C52', '#EFF822', '#7740EC', '#167510', '#1A32AC', '#141A80', '#E39F2E', '#46F54A','#AAEE25','#EE2576','#140209',
+        ];
+        const themeGrid = document.getElementById('themeGrid');
+        themeColors.forEach(color => {
+            const dot = document.createElement('div');
+            dot.className = 'theme-dot';
+            dot.style.background = color;
+            dot.dataset.theme = color;
+            dot.addEventListener('click', function(e) {
+                e.stopPropagation();
+                document.querySelector('.calculator').style.background = color;
+            });
+            themeGrid.appendChild(dot);
+        });
+
+        document.getElementById('gradientThemeBox').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const hue1 = Math.floor(Math.random() * 360);
+            const hue2 = Math.floor(Math.random() * 360);
+            const gradient = `linear-gradient(135deg, hsl(${hue1}, 60%, 30%), hsl(${hue2}, 60%, 20%))`;
+            document.querySelector('.calculator').style.background = gradient;
+        });
+
+        document.getElementById('themeSlider').addEventListener('input', function(e) {
+            const hue = this.value;
+            document.querySelector('.calculator').style.background = `hsl(${hue}, 40%, 20%)`;
+        });
+
+        document.getElementById('historyMenu').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const panel = document.getElementById('historyPanel');
+            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+            if (panel.style.display === 'block') renderHistory();
+        });
+
+        document.querySelectorAll('.btn, .mem-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                const action = this.dataset.action;
+                if (!action) return;
+                playBubble();
+                vibrate();
+
+                if (this.classList.contains('mem-btn')) {
+                    memoryAction(action);
+                    return;
+                }
+                handleAction(action);
+            });
+        });
+
+        renderHistory();
+        updateDisplay();
+    })();
+</script>
+</body>
+</html>
