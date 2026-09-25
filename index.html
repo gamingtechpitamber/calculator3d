@@ -1,1208 +1,175 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ne">
 <head>
-<script src="https://pl30869686.effectivecpmnetwork.com/c9/2f/18/c92f1891230dce8bf248f0dd275bfb9c.js"></script>
-
-    <meta charset="UTF-8">
-<script src="https://pl30869875.effectivecpmnetwork.com/1c/8f/8f/1c8f8fe3d90a4a3196fce070e257f1f6.js"></script>
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Calculator3d</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Calculator3dx– Free Android App</title>
     <style>
-        /* ----- RESET & BASE (ads-proof structure) ----- */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-        }
-        html, body {
-            min-height: 100%;
-            width: 100%;
-            background: #6D17EA;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+            background: #D0D5D5;
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 0;
-            margin: 0;
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        /* wrapper that holds calculator + banner */
-        .app-container {
-            width: 100%;
-            max-width: 420px;
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            justify-content: center;
-            padding: 8px 8px 12px;
-            gap: 10px;
-            margin: 0 auto;
+            min-height: 100vh;
+            padding: 10px;
         }
-        /* calculator card – no fixed height, adapts */
-        .calculator {
-            width: 100%;
-            background: #1e232c;
-            border-radius: 10px 10px 10px 10px;
-            padding: 12px 12px 16px;
-            box-shadow: 0 2px 2px rgba(0,0,0,0.6), inset 0 1px 2px rgba(255,255,255,0.08);
-            transition: background 0.2s;
-            flex-shrink: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        .right-panel {
-            flex: 0;
-            display: flex;
-            flex-direction: column;
-        }
-        .top-row {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-bottom: 12px;
-            padding: 0 4px;
-        }
-        .menu-icon {
-            font-size: 40px;
-            line-height: 1;
-            padding: 8px 6px 8px 4px;
-            cursor: pointer;
-            color: #E8F55F;
-            background: #EB7BF1;
-            border-radius: 5px;
-            width: 48px;
-            height: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0px 0 #0f1217, 0 2px 5px rgba(0,0,0,0.4);
-            transition: 0.06s linear;
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-        .menu-icon:active { transform: translateY(3px); box-shadow: 0 1px 0 #D2EE1B; }
-        .calc-3d-title {
-            font-size: 35px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: #86DD35;
-            text-shadow: 2px 2px 0 #2AE991, 1px 1px 0 #DAEF55, 0 6px 10px rgba(0,0,0,0.5);
-            transform: skewX(-4deg) scale(1.02);
-            padding-left: 8px;
-            font-family: 'Trebuchet MS', 'Segoe UI', sans-serif;
-            margin-left: auto;
-            white-space: nowrap;
-        }
-        .display-box {
-            background: #17231c;
+        .container {
+            max-width: 650px;
+            background: #E2E3E9;
+            padding: 30px 20px;
             border-radius: 8px;
-            padding: 9px 7px 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+        h1 {
+            font-size: 2rem;
+            color: #2740E8;
             margin-bottom: 10px;
-            box-shadow: inset 0 0 0 1px #7E96F0, inset 0 0 10px #ED1EDD, 0 8px 0 #0b130e;
-            border: 3px solid #F01249;
-            min-height: 95px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
         }
-        #displayTop {
-            background: transparent;
-            border: none;
-            width: 100%;
-            font-size: 22px;
-            font-weight: 600;
-            color: #E9EEEE;
+        .subtitle {
+            font-size: 1rem;
+            color: #108C1A;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #2a2a4a;
+            padding-bottom: 15px;
+        }
+        /* ✅ Paragraph 1 – गाढा निलो रङ */
+        .para1 {
+            font-size: 1rem;
+            line-height: 1.8;
             text-align: left;
-            outline: none;
-            letter-spacing: 0.5px;
-            min-height: 25px;
+            margin: 20px 0;
+            color: #14289B;
+        }
+        /* ✅ Paragraph 2 – गाढा रानी रङ */
+        .para2 {
+            font-size: 1rem;
+            line-height: 1.8;
+            text-align: left;
+            margin: 20px 0;
+            color: #8B0C5E;
+        }
+        .features {
+            text-align: left;
+            background: #f5f5f5;
+            padding: 18px 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #1A73E8;
+        }
+        .features h3 { color: #1A73E8; margin-bottom: 10px; }
+        .features ul { list-style: none; padding: 0; }
+        .features ul li {
             padding: 6px 0;
-            border-bottom: 2px solid #C827E9;
-            text-shadow: 0 0 1px #1f7a3a;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.95rem;
+            color: #333;
         }
-        #displayBottom {
-            background: transparent;
-            border: none;
-            width: 100%;
-            font-size: 50px;
-            font-weight: 700;
-            color: #b3f0c0;
-            text-align: right;
-            outline: none;
-            letter-spacing: 1px;
-            text-shadow: 0 0 2px #1f9e4a;
-            min-height: 75px;
-            padding: 12px 0 0;
-        }
-        .mem-row {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 11px;
-            margin-bottom: 4px;
-        }
-        .mem-btn {
-            background: #3a8cb0;
-            border: none;
-            border-radius: 8px;
-            padding: 6px 0;
-            font-size: 25px;
-            font-weight: 700;
-            color: #ECEB53;
-            box-shadow: 0 4px 0 #1d4b62, 0 6px 12px rgba(0,0,0,0.3);
-            transition: 0.04s linear;
-            text-shadow: 0 1px 2px #0f2d3b;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-        }
-        .mem-btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #1d4b62; }
-        .grid-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 13px;
-            margin-top: 4px;
-        }
-        .btn {
-            border: none;
-            border-radius: 8px;
-            padding: 6px 0;
-            font-size: 49px;
-            font-weight: 600;
-            background: #956EF2;
-            color: #E1CF29;
-            box-shadow: 0 4px 0 #57085D, 0 6px 12px rgba(0,0,0,0.3);
-            transition: 0.04s linear;
-            text-align: center;
-            cursor: pointer;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            border-left: 1px solid rgba(255,255,255,0.05);
-        }
-        .btn:active { transform: translateY(3px); box-shadow: 0 1px 0 #5717EE;
-            background: #d06b8e;
-            color: #D5EC6A;
-            box-shadow: 0 4px 0 #5717EE, 0 6px 12px rgba(0,0,0,0.3);
-            border-top: 0px solid rgba(255,255,255,0.2);
-            border-left: 0px solid rgba(255,255,255,0.1);
-        }
-        .btn-pink:active { box-shadow: 0 1px 0 #7f3e57; }
-        .btn-red {
-            background: #c94f4f;
-            color: white;
-            box-shadow: 0 4px 0 #792b2b, 0 6px 12px rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-red:active { box-shadow: 0 1px 0 #792b2b; }
-        .btn-blue {
-            background: #4d8fc5;
-            color: white;
-            box-shadow: 0 4px 0 #235183, 0 6px 12px rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-blue:active { box-shadow: 0 1px 0 #235183; }
-        .btn-green {
-            background: #3f9e6d;
-            color: white;
-            box-shadow: 0 4px 0 #1f5a3d, 0 6px 12px rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-green:active { box-shadow: 0 1px 0 #1f5a3d; }
-        .btn-equal {
-            background: #c96f8f;
-            color: white;
-            box-shadow: 0 4px 0 #7a4057, 0 6px 12px rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-equal:active { box-shadow: 0 1px 0 #7a4057; }
-        .btn-cut {
-            background: #b08bbd;
-            color: #1f1a26;
-            box-shadow: 0 4px 0 #6c4d7a, 0 6px 12px rgba(0,0,0,0.3);
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-left: 1px solid rgba(255,255,255,0.1);
-        }
-        .btn-cut:active { box-shadow: 0 1px 0 #6c4d7a; }
-        .span2 { grid-column: span 2; }
-
-        /* ---- BANNER ADS – fixed at bottom, below calculator ---- */
-        .banner-container {
-            width: 100%;
-            max-width: 320px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: transparent;
-            margin: 0 auto;
-            flex-shrink: 0;
-            overflow: hidden;
-        }
-        .banner-container iframe {
-            max-width: 320px;
-            width: 100%;
-            height: 50px;
-            border: none;
-        }
-
-        /* ===== LANDSCAPE MODE — compact ===== */
-        @media (orientation: landscape) {
-            .app-container {
-                max-width: 90vw;
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-                padding: 4px 8px;
-            }
-            .calculator {
-                max-width: 600px;
-                width: 70%;
-                padding: 8px 10px 10px;
-                border-radius: 8px;
-            }
-            .right-panel {
-                flex: 1;
-            }
-            .top-row { margin-bottom: 6px; gap: 6px; }
-            .menu-icon { width: 36px; height: 24px; font-size: 22px; padding: 2px; }
-            .calc-3d-title { font-size: 22px; transform: skewX(-3deg) scale(1); letter-spacing: 0.5px; }
-            .display-box { min-height: 50px; padding: 4px 6px; margin-bottom: 6px; }
-            #displayTop { font-size: 14px; min-height: 18px; }
-            #displayBottom { font-size: 28px; min-height: 32px; padding: 4px 0 0; }
-            .mem-row { gap: 6px; margin-bottom: 2px; }
-            .mem-btn { font-size: 16px; padding: 4px 0; box-shadow: 0 3px 0 #1d4b62; }
-            .mem-btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #1d4b62; }
-            .grid-buttons { gap: 6px; margin-top: 2px; }
-            .btn { font-size: 28px; padding: 4px 0; box-shadow: 0 3px 0 #141a24; }
-            .btn:active { transform: translateY(2px); box-shadow: 0 1px 0 #141a24; }
-            .btn-pink { box-shadow: 0 3px 0 #7f3e57; }
-            .btn-pink:active { box-shadow: 0 1px 0 #7f3e57; }
-            .btn-red { box-shadow: 0 3px 0 #792b2b; }
-            .btn-red:active { box-shadow: 0 1px 0 #792b2b; }
-            .btn-blue { box-shadow: 0 3px 0 #235183; }
-            .btn-blue:active { box-shadow: 0 1px 0 #235183; }
-            .btn-green { box-shadow: 0 3px 0 #1f5a3d; }
-            .btn-green:active { box-shadow: 0 1px 0 #1f5a3d; }
-            .btn-equal { box-shadow: 0 3px 0 #7a4057; }
-            .btn-equal:active { box-shadow: 0 1px 0 #7a4057; }
-            .btn-cut { box-shadow: 0 3px 0 #6c4d7a; }
-            .btn-cut:active { box-shadow: 0 1px 0 #6c4d7a; }
-            .banner-container {
-                max-width: 320px;
-                width: 100%;
-                height: 50px;
-                margin: 4px auto;
-            }
-        }
-
-        /* ===== MENU OVERLAY ===== */
-        .menu-overlay {
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(4px);
-            z-index: 999;
-            display: none;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .menu-panel {
-            background: #ffffff;
-            max-width: 400px;
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-            color: #1a1f2a;
-            max-height: 85vh;
-            overflow-y: auto;
-            padding: 16px;
-        }
-        .menu-item {
-            background: #f0f2f6;
-            border-radius: 8px;
-            padding: 14px 20px;
-            margin: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 18px;
-            font-size: 19px;
-            font-weight: 500;
-            box-shadow: 0 4px 0 #c8cdd6, inset 0 2px 4px rgba(255,255,255,0.8);
-            transition: 0.06s linear;
-            cursor: pointer;
-            color: #1a1f2a;
-        }
-        .menu-item:active { transform: translateY(3px); box-shadow: 0 1px 0 #c8cdd6; }
-        .menu-item span { flex: 1; }
-        .sub-panel {
-            background: #f8fafc;
-            border-radius: 10px;
-            padding: 8px;
-            margin: 8px 0;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.04);
-        }
-        .sub-item {
-            background: #eef0f4;
-            border-radius: 10px;
-            padding: 12px 100px;
-            margin: 6px 0;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-size: 18px;
-            font-weight: 500;
-            box-shadow: 0 3px 0 #c2c8d2;
-            transition: 0.04s linear;
-            cursor: pointer;
-            color: #1a1f2a;
-        }
-        .sub-item:active { transform: translateY(2px); box-shadow: 0 1px 0 #c2c8d2; }
-        .sub-item .icon { font-size: 24px; width: 32px; text-align: center; }
-        .setting-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            background: #eef0f4;
-            border-radius: 5px;
-            padding: 10px 10px;
-            margin: 6px 0;
-            box-shadow: 0 2px 0 #c2c8d2;
-        }
-        .setting-row .label {
-            font-size: 20px;
-            font-weight: 500;
-            color: #1a1f2a;
-        }
-        .setting-row .toggle {
-            font-size: 28px;
-            cursor: pointer;
-            padding: 4px 12px;
-            border-radius: 40px;
-            background: #d8dce6;
-            transition: 0.1s;
-            min-width: 64px;
-            text-align: center;
-        }
-        .setting-row .toggle:active { transform: scale(0.9); }
-        .setting-row .toggle.on { background: #7cb87c; color: white; }
-        .setting-row .toggle.off { background: #d8dce6; color: #555; }
-        .theme-row {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
-            margin: 14px 0 8px;
-            justify-items: center;
-        }
-        .theme-dot {
-            width: 44px;
-            height: 40px;
-            border-radius: 5px;
-            box-shadow: 0 1px 0 #b0b8c4;
-            cursor: pointer;
-            border: 2px solid #d0d8e4;
-            transition: 0.1s;
-        }
-        .theme-dot:active { transform: scale(0.9); }
-        .gradient-box {
-            width: 100%;
-            height: 20px;
-            border-radius: 5px;
-            background: linear-gradient(90deg, #ff7eb3, #ff758c, #f5b8ea, #7f7fd5);
-            margin: 8px 0 12px;
-            box-shadow: 0 4px 0 #b0b8c4;
-            cursor: pointer;
-            border: 2px solid #d0d8e4;
-        }
-        .color-slider {
-            width: 100%;
-            margin: 16px 0 6px;
-            accent-color: #4a6a8a;
-            height: 10px;
-            border-radius: 10px;
-        }
-        .history-list {
-            max-height: 200px;
-            overflow-y: auto;
-            margin: 10px 0;
-            background: #eef0f4;
-            border-radius: 10px;
-            padding: 8px 4px;
-        }
-        .history-entry {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 8px 12px;
-            background: #dfe3ea;
-            border-radius: 10px;
-            margin: 6px 0;
-            font-size: 18px;
-            gap: 6px;
-            color: #1a1f2a;
-        }
-        .history-entry .expr { flex:1; font-weight: 500; cursor: pointer; }
-        .history-entry .del { color: #b34a4a; font-weight: bold; padding: 0 8px; font-size: 22px; cursor: pointer; }
-        .history-entry .cut { color: #b37a3a; padding: 0 8px; font-size: 22px; cursor: pointer; }
-        .history-actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 10px 0; align-items: center; }
-        .history-actions button {
-            background: #d0d8e4;
-            border: none;
-            border-radius: 40px;
-            padding: 8px 18px;
-            color: #1a1f2a;
-            font-weight: 600;
-            box-shadow: 0 3px 0 #b0b8c4;
-            cursor: pointer;
-        }
-        .history-actions button:active { transform: translateY(2px); box-shadow: 0 1px 0 #b0b8c4; }
-        .close-menu {
-            background: #b34a4a;
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            width: 30%;
-            font-size: 22px;
-            font-weight: 700;
-            color: white;
-            box-shadow: 0 5px 0 #6f2f2f;
-            margin-top: 12px;
-            cursor: pointer;
-        }
-        .close-menu:active { transform: translateY(3px); box-shadow: 0 1px 0 #6f2f2f; }
-        .back-arrow {
-            font-size: 28px;
-            cursor: pointer;
-            padding: 4px 12px;
-            border-radius: 10px;
-            background: #eef0f4;
+        .download-btn {
             display: inline-block;
-            margin-bottom: 8px;
-        }
-        .back-arrow:active { transform: scale(0.9); }
-        .unit-cat-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
-            margin: 10px 0;
-        }
-        .unit-cat {
-            background: #eef0f4;
+            background: #2F33F5;
+            color: #fff;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
             border-radius: 10px;
-            padding: 10px 4px;
-            text-align: center;
-            font-weight: 500;
-            box-shadow: 0 3px 0 #c2c8d2;
-            cursor: pointer;
-            font-size: 14px;
+            margin: 20px 0;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
         }
-        .unit-cat:active { transform: translateY(2px); box-shadow: 0 1px 0 #c2c8d2; }
-        .conv-row {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-            margin: 6px 0;
-            flex-wrap: wrap;
+        .download-btn:hover { background: #8B0C5E; }
+        .footer-note {
+            margin-top: 25px;
+            font-size: 0.8rem;
+            color: #1C24ED;
+            border-top: 1px solid #E0C21C;
+            padding-top: 18px;
         }
-        .conv-row input, .conv-row select {
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid #c8d0dc;
-            background: white;
-            font-size: 16px;
-            flex: 1;
-            min-width: 60px;
-        }
-        .conv-row button {
-            background: #d0d8e4;
-            border: none;
-            border-radius: 10px;
-            padding: 8px 16px;
-            font-weight: 600;
-            box-shadow: 0 3px 0 #b0b8c4;
-            cursor: pointer;
-        }
-        .conv-row button:active { transform: translateY(2px); box-shadow: 0 1px 0 #b0b8c4; }
-        .conv-result {
-            font-weight: 600;
-            padding: 6px 12px;
-            background: #eef0f4;
-            border-radius: 10px;
-            margin: 6px 0;
+        @media (max-width: 500px) {
+            .container { padding: 20px 15px; }
+            h1 { font-size: 1.6rem; }
+            .download-btn { padding: 12px 25px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-<div class="app-container">
-    <!-- CALCULATOR -->
-    <div class="calculator" id="calcApp">
-        <div class="right-panel">
-            <div class="top-row">
-                <div class="menu-icon" id="menuIcon">☰</div>
-                <div class="calc-3d-title">Calculator3D</div>
-            </div>
+    <div class="container">
+        <h1>🧮 Calculator3dx</h1>
+        <div class="subtitle">All-in-One Calculator App for Android</div>
 
-            <div class="display-box">
-                <input type="text" id="displayTop" placeholder="expression" readonly>
-                <input type="text" id="displayBottom" value="0" readonly>
-            </div>
+        <!-- ✅ Paragraph 1 – निलो रङ -->
+        <p class="para1">
+            <strong>Calculator with Tools</strong> <span style="color:#1F65E2;"><b> Calculator 3DX : </b>याे क्याल्कुलेटर नयाँ पुस्ताको लागि उपयुक्त रहेको छ।यसमा साधारण टुल्स पनि समेटिएको छ।यो क्याल्कुलेटर आजको युगमा प्रयोग गर्न उपयुक्त रहेको छ।
 
-            <div class="mem-row">
-                <button class="mem-btn" data-action="mc">MC</button>
-                <button class="mem-btn" data-action="m+">M+</button>
-                <button class="mem-btn" data-action="m-">M−</button>
-                <button class="mem-btn" data-action="mr">MR</button>
-            </div>
+---
+     </p>
 
-            <div class="grid-buttons">
-                <button class="btn btn-red" data-action="clear">C</button>
-                <button class="btn btn-blue" data-action="sign">±</button>
-                <button class="btn btn-pink" data-action="paren">( )</button>
-                <button class="btn btn-pink" data-action="percent">%</button>
+        <!-- ✅ Paragraph 2 – रानी रङ -->
+        <p class="para2">
 
-                <button class="btn btn-green" data-action="7">7</button>
-                <button class="btn btn-green" data-action="8">8</button>
-                <button class="btn btn-green" data-action="9">9</button>
-                <button class="btn btn-pink" data-action="divide">÷</button>
+📝 परिचय (Introduction) –:
 
-                <button class="btn btn-green" data-action="4">4</button>
-                <button class="btn btn-green" data-action="5">5</button>
-                <button class="btn btn-green" data-action="6">6</button>
-                <button class="btn btn-pink" data-action="multiply">×</button>
+· 👉क्याल्कुलेटर एक गणक यन्त्र हो ।यो त्यसमा भएका बटन को प्रयोग गरेर सजिलै गणक तथ्यांक निकालिन्छ।तथ्यांक निकालिने एक गणक यन्त्र हो जसमा जोड,घटाउ, गुणन,भाग का साथै अन्य तथ्यांक निकाल्न सकिन्छ। 
+· यो किन विशेष छ? (3D, कलरफुल, फिचरहरू)-: यस क्याल्कुलेटर मा 3d बटन हरु रहेको छ।ती बटन हरु रंगीन रहेका छन्।ती रंगीन बटनमा फरक फरक रङ्गहरू रहेको छ।यो क्याल्कुलेटर बिना इन्टरनेट चलाउन सकिने छ।रंगीन छ र सजिलो छ ।
 
-                <button class="btn btn-green" data-action="1">1</button>
-                <button class="btn btn-green" data-action="2">2</button>
-                <button class="btn btn-green" data-action="3">3</button>
-                <button class="btn btn-pink" data-action="subtract">−</button>
+        </p>
 
-                <button class="btn btn-green" data-action="0">0</button>
-                <button class="btn btn-green" data-action="dot">.</button>
-                <button class="btn btn-cut" data-action="cut">✂</button>
-                <button class="btn btn-pink" data-action="add">+</button>
+        <!-- ✅ Paragraph 3– सुन्तला रङ -->
+        <p class="para3">
+            यो calculator with tools एप प्रयोग गर्न एकदमै सजिलो छ।यसमा ब8भ8नन सुविधा हती त्यस tools bjitra रहेका छन्। यसको आकर्षक डिजाइन, छिटो प्रदर्शन, र सहज इन्टरफेसले गर्दा तपाईंले कुनै पनि गणना छिटो र सटीक रूपमा गर्न सक्नुहुनेछ। साथै, यो एप पूर्ण रूपमा निःशुल्क छ र कुनै पनि पाइद र प्रो अप्सन समावेश छैन।
+        </p>
 
-                <button class="btn btn-equal span2" data-action="equals" style="grid-column: 3 / 5;">=</button>
-            </div>
-        </div>
+<!-- ✅ Paragraph 4 – हरियो रङ -->
+<p class="para4">
+       यो calculator मा मेनु आईकन र त्यस भित्र अन्य टुल्सहरू रहेका छ। हिस्ट्री अप्सन जसमा पहिले टाइपिङ गरेको हिस्ट्री शो हुनेछ।डिजाइन बटन जसमा क्याल्कुलेटर बटन लाई अन्य कलरमा परिवर्तन गर्न सकिन्छ।यो calculator मा विभिन्न सुविधा राखिएको ले उपयोग8 रहेको छ।
+ </p>
+
+
+
+        <!-- ✅ विशेषताहरू (Key Features) –:
+
+· 👉 Display Box: गणना परिणाम 3D प्रभावमा देखाउँछ। जसमा डेमो डिस्प्ले बक्स र त्यसमा डेमो टाइपिङ शो हुन्छ र कति अङ्क टाइप गरेको छ देखाउँछ।
+· 👉Colorful Buttons: प्रत्येक बटन फरक रंगको (गणितीय सञ्चालन अनुसार)बटनहरु रहेका छन्।
+· 👉Menu Options: सेटिङ, हिस्ट्री, डिजाइन, ब्याकग्राउन्ड कलर बदल्ने विकल्पहरु आदि रहेका छन्।
+---
+
+कसरी प्रयोग गर्ने? (How to Use) – चरणबद्ध
+
+1. 👉Display Box: नम्बर र परिणाम यहाँ देखिन्छ।
+2. 👉Buttons: नम्बर, अपरेटर (+, -, ×, ÷), बराबर (=) बटन।
+3. 👉Menu Icon: क्लिक गर्दा सेटिङ, हिस्ट्री, डिजाइन, ब्याकग्राउन्ड कलर,टुल्स विकल्प खुल्छ।जसलाई तपाईं प्रयोग गर्न सक्नु हुनेछ।
+4.👉 Demo display Box: रियल-टाइम प्रयोगको लागि टाइपिङ डेमो अंक देखिने छ।
+
+---
+
+calculator 3dx एक उपयुक्त गणक एप रहेको छ।धेरै उपयोगी टुल्सहरु रहेका छन्।ती टुल्स हरू को प्रयोग एकै क्याल्कुलेटर प्रयोग गर्न सकिने छ।
+
+
+ 👉क्याल्कुलेटर 3dx को HTML फाइल GitHub Pages मा होस्ट गरिएको छ। github live link-:
+
+---
+
+👉निष्कर्ष (Conclusion) – 
+
+· 👉आउनुस तपाईहरु यो क्याल्कुलेटर 3dx एप इन्स्टल गरी आजै प्रयोग गर्नुस् -:
+
+👉Calculator3dx डाउनलोड link:-
+<a href="https://d.apkpure.com/b/APK/calculator3dx?version=latest" 
+   class="download-btn" 
+   target="_blank" 
+   rel="noopener"
+   style="display:inline-block; background:#2F33F5; color:#fff; padding:15px 40px; font-size:1.2rem; font-weight:bold; text-decoration:none; border-radius:10px; margin:20px 0; box-shadow:0 6px 20px rgba(0,0,0,0.3);">
+   📥 APK डाउनलोड गर्नुहोस्
+</a>
+
+  <div class="version">संस्करण 1.0 | नि:शुल्क</div>
+
+
+
+· 👉कस्तो लाग्यो calculator 3dx एप प्रयोग गरेपछि।तपाईंको प्रतिक्रिया कमेन्ट बक्समा  दिनुहोस् ।यस्तै जानकारी को लागी gamezonefree100 blog सँग जोडिनुस्।
+
+<div class="footer-note">GamingTechPitamber – नेपालको गेमिङ र टेक ब्लग</div>
     </div>
-
-    <!-- BANNER ADS – bottom of calculator, centered, 320×50 -->
-    <div class="banner-container" id="bannerContainer">
-        <script>
-            atOptions = {
-                'key' : '67fe0ffce9208ca13c4ba261ac4b31a6',
-                'format' : 'iframe',
-                'height' : 50,
-                'width' : 320,
-                'params' : {}
-            };
-        </script>
-        <script src="https://www.highperformanceformat.com/67fe0ffce9208ca13c4ba261ac4b31a6/invoke.js">
-        </script>
-    </div>
-</div>
-
-<!-- MENU OVERLAY -->
-<div class="menu-overlay" id="menuOverlay">
-    <div class="menu-panel" id="menuPanel">
-        <div id="mainMenu">
-            <div class="menu-item" id="themeMenu">
-                <span>🎨 Theme</span>
-                <span style="font-size:24px;">▶</span>
-            </div>
-            <div id="themeOptions" style="display:none;">
-                <div class="theme-row" id="themeGrid"></div>
-                <div class="gradient-box" id="gradientThemeBox"></div>
-                <input type="range" class="color-slider" id="themeSlider" min="0" max="360" value="0">
-                <div style="margin-top:8px; text-align:right;"><span class="back-arrow" id="themeBack">⬅ Back</span></div>
-            </div>
-
-            <div class="menu-item" id="settingsMenu">
-                <span>⚙️ Settings</span>
-                <span style="font-size:24px;">▶</span>
-            </div>
-            <div id="settingsPanel" style="display:none;">
-                <div class="setting-row">
-                    <span class="label">🔊 Sound</span>
-                    <span class="toggle on" id="soundToggle">ON</span>
-                </div>
-                <div class="setting-row">
-                    <span class="label">📳 Vibrate</span>
-                    <span class="toggle on" id="vibeToggle">ON</span>
-                </div>
-                <div style="margin-top:8px; text-align:right;"><span class="back-arrow" id="settingsBack">⬅ Back</span></div>
-            </div>
-
-            <div class="menu-item" id="toolsMenu">
-                <span>🛠️ Tools</span>
-                <span style="font-size:24px;">▶</span>
-            </div>
-            <div id="toolsPanel" style="display:none;">
-                <div class="sub-item" id="dateCalc"><span class="icon">📅</span> Date Calculator</div>
-                <div class="sub-item" id="ageCalc"><span class="icon">🎂</span> Age Calculator</div>
-                <div class="sub-item" id="landCalc"><span class="icon">🏞️</span> Land Calculator</div>
-                <div class="sub-item" id="unitConverter"><span class="icon">📏</span> Unit Converter</div>
-                <div class="sub-item" id="currencyConverter"><span class="icon">💱</span> Currency Converter</div>
-                <div style="margin-top:8px; text-align:right;"><span class="back-arrow" id="toolsBack">⬅ Back</span></div>
-            </div>
-
-            <div class="menu-item" id="historyMenu">
-                <span>📜 History</span>
-                <span style="font-size:24px;">▶</span>
-            </div>
-            <div id="historyPanel" style="display:none;">
-                <div class="history-actions">
-                    <button id="selectAllHistory">☑ Select all</button>
-                    <button id="deleteSelectedHistory">🗑 Delete selected</button>
-                    <button id="deleteAllHistory">🗑 Delete all</button>
-                </div>
-                <div class="history-list" id="historyList"></div>
-                <div style="margin-top:8px; text-align:right;"><span class="back-arrow" id="historyBack">⬅ Back</span></div>
-            </div>
-
-            <button class="close-menu" id="closeMenu">✕ Close</button>
-        </div>
-
-        <!-- sub-panels -->
-        <div id="datePanel" style="display:none;" class="sub-panel">
-            <div class="back-arrow" id="dateBack">⬅ Back</div>
-            <h3>📅 Date Calculator</h3>
-            <div class="conv-row">
-                <input type="date" id="dateInput1">
-                <span>to</span>
-                <input type="date" id="dateInput2">
-                <button id="dateDiffBtn">Difference</button>
-            </div>
-            <div class="conv-result" id="dateResult">Result</div>
-        </div>
-
-        <div id="agePanel" style="display:none;" class="sub-panel">
-            <div class="back-arrow" id="ageBack">⬅ Back</div>
-            <h3>🎂 Age Calculator</h3>
-            <div class="conv-row">
-                <input type="date" id="birthDate">
-                <button id="ageCalcBtn">Calculate Age</button>
-            </div>
-            <div class="conv-result" id="ageResult">Result</div>
-        </div>
-
-        <div id="landPanel" style="display:none;" class="sub-panel">
-            <div class="back-arrow" id="landBack">⬅ Back</div>
-            <h3>🏞️ Land Calculator</h3>
-            <div class="conv-row">
-                <input type="number" id="landInput" placeholder="Area">
-                <select id="landFrom">
-                    <option value="sqft">Sq Ft</option>
-                    <option value="sqm">Sq M</option>
-                    <option value="acre">Acre</option>
-                    <option value="hectare">Hectare</option>
-                </select>
-                <span>→</span>
-                <select id="landTo">
-                    <option value="sqft">Sq Ft</option>
-                    <option value="sqm">Sq M</option>
-                    <option value="acre">Acre</option>
-                    <option value="hectare">Hectare</option>
-                </select>
-                <button id="landConvertBtn">Convert</button>
-            </div>
-            <div class="conv-result" id="landResult">Result</div>
-        </div>
-
-        <div id="unitPanel" style="display:none;" class="sub-panel">
-            <div class="back-arrow" id="unitBack">⬅ Back</div>
-            <h3>📏 Unit Converter</h3>
-            <div class="unit-cat-grid" id="unitCatGrid">
-                <div class="unit-cat" data-cat="length">Length</div>
-                <div class="unit-cat" data-cat="area">Area</div>
-                <div class="unit-cat" data-cat="volume">Volume</div>
-                <div class="unit-cat" data-cat="mass">Mass</div>
-                <div class="unit-cat" data-cat="temperature">Temperature</div>
-                <div class="unit-cat" data-cat="storage">Storage</div>
-                <div class="unit-cat" data-cat="pressure">Pressure</div>
-                <div class="unit-cat" data-cat="heat">Heat</div>
-                <div class="unit-cat" data-cat="speed">Speed</div>
-                <div class="unit-cat" data-cat="time">Time</div>
-                <div class="unit-cat" data-cat="angle">Angle</div>
-                <div class="unit-cat" data-cat="power">Power</div>
-            </div>
-            <div id="unitConvArea" style="margin-top:12px;"></div>
-        </div>
-
-        <div id="currencyPanel" style="display:none;" class="sub-panel">
-            <div class="back-arrow" id="currencyBack">⬅ Back</div>
-            <h3>💱 Currency Converter</h3>
-            <div class="conv-row">
-                <input type="number" id="currencyAmount" placeholder="Amount">
-                <select id="currencyFrom">
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="JPY">JPY</option>
-                    <option value="INR">INR</option>
-                    <option value="NPR">NPR</option>
-                </select>
-                <span>→</span>
-                <select id="currencyTo">
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="GBP">GBP</option>
-                    <option value="JPY">JPY</option>
-                    <option value="INR">INR</option>
-                    <option value="NPR">NPR</option>
-                </select>
-                <button id="currencyConvertBtn">Convert</button>
-            </div>
-            <div class="conv-result" id="currencyResult">Result</div>
-            <div style="font-size:12px; color:#666; margin-top:4px;">* using fixed rates (1 USD = 0.85 EUR, 0.75 GBP, 110 JPY, 83 INR, 133 NPR)</div>
-        </div>
-    </div>
-</div>
-
-<script>
-    (function() {
-        // ----- core calculator -----
-        const displayTop = document.getElementById('displayTop');
-        const displayBottom = document.getElementById('displayBottom');
-        let expression = '';
-        let memory = 0;
-        let history = JSON.parse(localStorage.getItem('calcHistory')) || [];
-        let soundEnabled = true;
-        let vibrationEnabled = true;
-
-        let audioCtx = null;
-        function playBubble() {
-            if (!soundEnabled) return;
-            try {
-                if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = audioCtx.createOscillator();
-                const gain = audioCtx.createGain();
-                osc.connect(gain);
-                gain.connect(audioCtx.destination);
-                osc.frequency.value = 720 + Math.random() * 180;
-                osc.type = 'sine';
-                gain.gain.setValueAtTime(0.15, audioCtx.currentTime);
-                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
-                osc.start();
-                osc.stop(audioCtx.currentTime + 0.08);
-            } catch(e) {}
-        }
-
-        function vibrate() {
-            if (vibrationEnabled && navigator.vibrate) navigator.vibrate(10);
-        }
-
-        function updateDisplay() {
-            displayTop.value = expression || '';
-            displayBottom.value = expression || '0';
-        }
-
-        function saveHistory() {
-            localStorage.setItem('calcHistory', JSON.stringify(history));
-        }
-
-        function addHistory(expr, result) {
-            history.unshift({ expr, result });
-            if (history.length > 80) history.pop();
-            saveHistory();
-        }
-
-        function evaluateExpression(expr) {
-            if (!expr) return null;
-            let sanitized = expr.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
-            sanitized = sanitized.replace(/[+\-*/]+$/, '');
-            sanitized = sanitized.replace(/(\d+)%/g, (m, n) => `(${n}/100)`);
-            sanitized = sanitized.replace(/(\d+\.\d+)%/g, (m, n) => `(${n}/100)`);
-            try {
-                const result = Function('"use strict"; return (' + sanitized + ')')();
-                if (typeof result === 'number' && isFinite(result)) return result;
-                return null;
-            } catch(e) {
-                return null;
-            }
-        }
-
-        function handleAction(action) {
-            if (action === 'clear') { expression = ''; updateDisplay(); return; }
-            if (action === 'sign') {
-                if (expression.startsWith('-')) expression = expression.slice(1);
-                else expression = '-' + expression;
-                updateDisplay(); return;
-            }
-            if (action === 'percent') { expression += '%'; updateDisplay(); return; }
-            if (action === 'paren') {
-                const open = (expression.match(/\(/g) || []).length;
-                const close = (expression.match(/\)/g) || []).length;
-                expression += open <= close ? '(' : ')';
-                updateDisplay(); return;
-            }
-            if (action === 'cut') { expression = expression.slice(0, -1); updateDisplay(); return; }
-            if (action === 'dot') {
-                const lastNum = expression.split(/[\+\-\*\/\(\)]/).pop();
-                if (lastNum && lastNum.includes('.')) return;
-                expression += '.';
-                updateDisplay(); return;
-            }
-            if (action === 'equals') {
-                const result = evaluateExpression(expression);
-                if (result !== null && isFinite(result)) {
-                    const histExpr = expression;
-                    expression = result.toString();
-                    displayTop.value = histExpr + ' =';
-                    displayBottom.value = result.toString();
-                    addHistory(histExpr, result);
-                } else {
-                    let fixed = expression.replace(/[+\-×÷]+$/, '');
-                    if (fixed !== expression) {
-                        const result2 = evaluateExpression(fixed);
-                        if (result2 !== null && isFinite(result2)) {
-                            const histExpr = fixed;
-                            expression = result2.toString();
-                            displayTop.value = histExpr + ' =';
-                            displayBottom.value = result2.toString();
-                            addHistory(histExpr, result2);
-                            return;
-                        }
-                    }
-                    displayBottom.value = 'Error';
-                    setTimeout(() => { displayBottom.value = expression || '0'; }, 600);
-                }
-                return;
-            }
-            const ops = ['add','subtract','multiply','divide'];
-            if (ops.includes(action)) {
-                const map = { add:'+', subtract:'−', multiply:'×', divide:'÷' };
-                const lastChar = expression.slice(-1);
-                if (['+','−','×','÷'].includes(lastChar)) {
-                    expression = expression.slice(0, -1) + map[action];
-                } else {
-                    expression += map[action];
-                }
-                updateDisplay(); return;
-            }
-            if (/^[0-9]$/.test(action)) {
-                expression += action;
-                updateDisplay(); return;
-            }
-        }
-
-        function memoryAction(cmd) {
-            const val = parseFloat(expression);
-            if (cmd === 'mc') { memory = 0; return; }
-            if (cmd === 'mr') { expression = memory.toString(); updateDisplay(); return; }
-            if (cmd === 'm+') { if (!isNaN(val)) memory += val; return; }
-            if (cmd === 'm-') { if (!isNaN(val)) memory -= val; return; }
-        }
-
-        // ----- history -----
-        function renderHistory() {
-            const container = document.getElementById('historyList');
-            if (!container) return;
-            container.innerHTML = '';
-            history.forEach((item, idx) => {
-                const div = document.createElement('div');
-                div.className = 'history-entry';
-                div.innerHTML = `
-                    <input type="checkbox" class="history-check" data-idx="${idx}">
-                    <span class="expr">${item.expr} = ${item.result}</span>
-                    <span class="cut" data-idx="${idx}">✂</span>
-                    <span class="del" data-idx="${idx}">✕</span>
-                `;
-                div.querySelector('.expr').addEventListener('click', () => {
-                    expression = item.result.toString();
-                    displayTop.value = item.expr + ' =';
-                    displayBottom.value = item.result.toString();
-                    closeMenu();
-                });
-                div.querySelector('.cut').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    history.splice(idx, 1);
-                    saveHistory();
-                    renderHistory();
-                });
-                div.querySelector('.del').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    history.splice(idx, 1);
-                    saveHistory();
-                    renderHistory();
-                });
-                container.appendChild(div);
-            });
-            document.getElementById('selectAllHistory').onclick = () => {
-                document.querySelectorAll('.history-check').forEach(cb => cb.checked = true);
-            };
-            document.getElementById('deleteSelectedHistory').onclick = () => {
-                const checks = document.querySelectorAll('.history-check:checked');
-                const indices = Array.from(checks).map(cb => parseInt(cb.dataset.idx)).sort((a,b)=>b-a);
-                indices.forEach(i => history.splice(i,1));
-                saveHistory();
-                renderHistory();
-            };
-            document.getElementById('deleteAllHistory').onclick = () => {
-                history = [];
-                saveHistory();
-                renderHistory();
-            };
-        }
-
-        // ----- menu -----
-        const overlay = document.getElementById('menuOverlay');
-        function openMenu() { overlay.style.display = 'flex'; renderHistory(); }
-        function closeMenu() { overlay.style.display = 'none'; }
-
-        document.getElementById('menuIcon').addEventListener('click', (e) => { e.stopPropagation(); openMenu(); });
-        document.getElementById('closeMenu').addEventListener('click', closeMenu);
-        overlay.addEventListener('click', (e) => { if (e.target === overlay) closeMenu(); });
-
-        function showPanel(panelId) {
-            document.querySelectorAll('.sub-panel, #mainMenu').forEach(el => el.style.display = 'none');
-            document.getElementById(panelId).style.display = 'block';
-        }
-        function showMain() {
-            document.querySelectorAll('.sub-panel, #mainMenu').forEach(el => el.style.display = '');
-            document.getElementById('mainMenu').style.display = '';
-            document.querySelectorAll('.sub-panel').forEach(el => el.style.display = 'none');
-        }
-
-        // Theme
-        document.getElementById('themeMenu').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const opt = document.getElementById('themeOptions');
-            opt.style.display = opt.style.display === 'none' ? 'block' : 'none';
-        });
-        document.getElementById('themeBack').addEventListener('click', () => {
-            document.getElementById('themeOptions').style.display = 'none';
-        });
-
-        // Settings - Sound & Vibrate toggles
-        const soundToggle = document.getElementById('soundToggle');
-        const vibeToggle = document.getElementById('vibeToggle');
-
-        soundToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            soundEnabled = !soundEnabled;
-            soundToggle.textContent = soundEnabled ? 'ON' : 'OFF';
-            soundToggle.className = 'toggle ' + (soundEnabled ? 'on' : 'off');
-        });
-
-        vibeToggle.addEventListener('click', (e) => {
-            e.stopPropagation();
-            vibrationEnabled = !vibrationEnabled;
-            vibeToggle.textContent = vibrationEnabled ? 'ON' : 'OFF';
-            vibeToggle.className = 'toggle ' + (vibrationEnabled ? 'on' : 'off');
-        });
-
-        document.getElementById('settingsMenu').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const panel = document.getElementById('settingsPanel');
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-        });
-        document.getElementById('settingsBack').addEventListener('click', () => {
-            document.getElementById('settingsPanel').style.display = 'none';
-            showMain();
-        });
-
-        // Tools
-        document.getElementById('toolsMenu').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const panel = document.getElementById('toolsPanel');
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-        });
-        document.getElementById('toolsBack').addEventListener('click', () => {
-            document.getElementById('toolsPanel').style.display = 'none';
-            showMain();
-        });
-
-        // History
-        document.getElementById('historyMenu').addEventListener('click', (e) => {
-            e.stopPropagation();
-            const panel = document.getElementById('historyPanel');
-            panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
-            if (panel.style.display === 'block') renderHistory();
-        });
-        document.getElementById('historyBack').addEventListener('click', () => {
-            document.getElementById('historyPanel').style.display = 'none';
-            showMain();
-        });
-
-        // Theme colors
-        const themeColors = [
-            '#1e232c','#2b2b2b','#3a3a3a','#5a5a5a','#0d3b4f',
-            '#3b2b2b','#2e3b2b','#4a2b4a','#1a3a3a','#3a1a2a',
-            '#f0f0f0','#d0d0d0','#b0b0b0','#a0c0d0','#b0d0b0',
-            '#d0b0b0','#d0a0b0','#c0b0a0','#90b0c0','#b0b0c0',
-            '#ffffff','#808080','#c0c0c0','#90d0a0','#80b0d0',
-            '#d08080','#d0a0b0','#e0d0c0','#c0d0e0','#e0c0d0'
-        ];
-        const themeGrid = document.getElementById('themeGrid');
-        themeColors.forEach(color => {
-            const dot = document.createElement('div');
-            dot.className = 'theme-dot';
-            dot.style.background = color;
-            dot.dataset.theme = color;
-            dot.addEventListener('click', function(e) {
-                e.stopPropagation();
-                document.querySelector('.calculator').style.background = color;
-            });
-            themeGrid.appendChild(dot);
-        });
-
-        document.getElementById('gradientThemeBox').addEventListener('click', function(e) {
-            e.stopPropagation();
-            const h1 = Math.floor(Math.random() * 360);
-            const h2 = Math.floor(Math.random() * 360);
-            document.querySelector('.calculator').style.background = `linear-gradient(135deg, hsl(${h1}, 60%, 30%), hsl(${h2}, 60%, 20%))`;
-        });
-        document.getElementById('themeSlider').addEventListener('input', function(e) {
-            document.querySelector('.calculator').style.background = `hsl(${this.value}, 40%, 20%)`;
-        });
-
-        // Tools: Date, Age, Land, Unit, Currency
-        document.getElementById('dateCalc').addEventListener('click', () => { showPanel('datePanel'); });
-        document.getElementById('dateBack').addEventListener('click', () => { showMain(); });
-        document.getElementById('dateDiffBtn').addEventListener('click', () => {
-            const d1 = new Date(document.getElementById('dateInput1').value);
-            const d2 = new Date(document.getElementById('dateInput2').value);
-            if (isNaN(d1) || isNaN(d2)) { document.getElementById('dateResult').textContent = 'Please select both dates'; return; }
-            const diff = Math.abs(d2 - d1);
-            const days = Math.floor(diff / (1000*60*60*24));
-            document.getElementById('dateResult').textContent = `Difference: ${days} days`;
-        });
-
-        document.getElementById('ageCalc').addEventListener('click', () => { showPanel('agePanel'); });
-        document.getElementById('ageBack').addEventListener('click', () => { showMain(); });
-        document.getElementById('ageCalcBtn').addEventListener('click', () => {
-            const birth = new Date(document.getElementById('birthDate').value);
-            if (isNaN(birth)) { document.getElementById('ageResult').textContent = 'Please select birth date'; return; }
-            const today = new Date();
-            let age = today.getFullYear() - birth.getFullYear();
-            const m = today.getMonth() - birth.getMonth();
-            if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) age--;
-            document.getElementById('ageResult').textContent = `Age: ${age} years`;
-        });
-
-        document.getElementById('landCalc').addEventListener('click', () => { showPanel('landPanel'); });
-        document.getElementById('landBack').addEventListener('click', () => { showMain(); });
-        document.getElementById('landConvertBtn').addEventListener('click', () => {
-            const val = parseFloat(document.getElementById('landInput').value);
-            if (isNaN(val)) { document.getElementById('landResult').textContent = 'Enter a number'; return; }
-            const from = document.getElementById('landFrom').value;
-            const to = document.getElementById('landTo').value;
-            const toSqm = { sqft: 0.092903, sqm: 1, acre: 4046.86, hectare: 10000 };
-            const fromSqm = toSqm[from];
-            const toSqm2 = toSqm[to];
-            if (!fromSqm || !toSqm2) { document.getElementById('landResult').textContent = 'Invalid unit'; return; }
-            const result = (val * fromSqm) / toSqm2;
-            document.getElementById('landResult').textContent = `${val} ${from} = ${result.toFixed(4)} ${to}`;
-        });
-
-        // Unit Converter
-        document.getElementById('unitConverter').addEventListener('click', () => {
-            showPanel('unitPanel');
-            document.querySelector('[data-cat="length"]').click();
-        });
-        document.getElementById('unitBack').addEventListener('click', () => { showMain(); });
-
-        const unitDefs = {
-            length: { units: ['mm','cm','m','km','in','ft','yd','mi'], factor: { mm:0.001, cm:0.01, m:1, km:1000, in:0.0254, ft:0.3048, yd:0.9144, mi:1609.34 } },
-            area: { units: ['sqmm','sqcm','sqm','sqkm','sqin','sqft','sqyd','acre','ha'], factor: { sqmm:0.000001, sqcm:0.0001, sqm:1, sqkm:1000000, sqin:0.00064516, sqft:0.092903, sqyd:0.836127, acre:4046.86, ha:10000 } },
-            volume: { units: ['ml','l','m3','ft3','gal','qt','pt'], factor: { ml:0.001, l:1, m3:1000, ft3:28.3168, gal:3.78541, qt:0.946353, pt:0.473176 } },
-            mass: { units: ['mg','g','kg','ton','lb','oz','st'], factor: { mg:0.001, g:1, kg:1000, ton:1000000, lb:453.592, oz:28.3495, st:6350.29 } },
-            temperature: { units: ['C','F','K'], factor: {} },
-            storage: { units: ['B','KB','MB','GB','TB'], factor: { B:1, KB:1024, MB:1048576, GB:1073741824, TB:1099511627776 } },
-            pressure: { units: ['Pa','kPa','MPa','bar','psi','atm'], factor: { Pa:1, kPa:1000, MPa:1000000, bar:100000, psi:6894.76, atm:101325 } },
-            heat: { units: ['J','kJ','cal','kcal','Wh','kWh'], factor: { J:1, kJ:1000, cal:4.184, kcal:4184, Wh:3600, kWh:3600000 } },
-            speed: { units: ['m/s','km/h','mph','ft/s','kn'], factor: { 'm/s':1, 'km/h':0.277778, 'mph':0.44704, 'ft/s':0.3048, 'kn':0.514444 } },
-            time: { units: ['s','min','h','day','week','month','year'], factor: { s:1, min:60, h:3600, day:86400, week:604800, month:2629800, year:31557600 } },
-            angle: { units: ['deg','rad','grad','arcmin','arcsec'], factor: { deg:1, rad:57.2958, grad:0.9, arcmin:0.0166667, arcsec:0.000277778 } },
-            power: { units: ['W','kW','MW','hp','BTU/h'], factor: { W:1, kW:1000, MW:1000000, hp:745.7, 'BTU/h':0.293071 } }
-        };
-
-        document.querySelectorAll('.unit-cat').forEach(cat => {
-            cat.addEventListener('click', function() {
-                const catName = this.dataset.cat;
-                const area = document.getElementById('unitConvArea');
-                const def = unitDefs[catName];
-                if (!def) return;
-                let html = `<div class="conv-row">
-                    <input type="number" id="unitInput" placeholder="Value">
-                    <select id="unitFrom">`;
-                def.units.forEach(u => { html += `<option value="${u}">${u}</option>`; });
-                html += `</select><span>→</span><select id="unitTo">`;
-                def.units.forEach(u => { html += `<option value="${u}">${u}</option>`; });
-                html += `</select><button id="unitConvertBtn">Convert</button></div>
-                    <div class="conv-result" id="unitResult">Result</div>`;
-                area.innerHTML = html;
-
-                document.getElementById('unitConvertBtn').addEventListener('click', function() {
-                    const val = parseFloat(document.getElementById('unitInput').value);
-                    if (isNaN(val)) { document.getElementById('unitResult').textContent = 'Enter a number'; return; }
-                    const from = document.getElementById('unitFrom').value;
-                    const to = document.getElementById('unitTo').value;
-                    if (catName === 'temperature') {
-                        let c;
-                        if (from === 'C') c = val;
-                        else if (from === 'F') c = (val - 32) * 5/9;
-                        else if (from === 'K') c = val - 273.15;
-                        else { document.getElementById('unitResult').textContent = 'Invalid unit'; return; }
-                        let result;
-                        if (to === 'C') result = c;
-                        else if (to === 'F') result = c * 9/5 + 32;
-                        else if (to === 'K') result = c + 273.15;
-                        else { document.getElementById('unitResult').textContent = 'Invalid unit'; return; }
-                        document.getElementById('unitResult').textContent = `${val} ${from} = ${result.toFixed(4)} ${to}`;
-                    } else {
-                        const factor = def.factor;
-                        const fromFactor = factor[from];
-                        const toFactor = factor[to];
-                        if (!fromFactor || !toFactor) { document.getElementById('unitResult').textContent = 'Invalid unit'; return; }
-                        const result = (val * fromFactor) / toFactor;
-                        document.getElementById('unitResult').textContent = `${val} ${from} = ${result.toFixed(6)} ${to}`;
-                    }
-                });
-            });
-        });
-
-        // Currency Converter (now in Tools)
-        document.getElementById('currencyConverter').addEventListener('click', () => { showPanel('currencyPanel'); });
-        document.getElementById('currencyBack').addEventListener('click', () => { showMain(); });
-        document.getElementById('currencyConvertBtn').addEventListener('click', () => {
-            const amount = parseFloat(document.getElementById('currencyAmount').value);
-            if (isNaN(amount)) { document.getElementById('currencyResult').textContent = 'Enter amount'; return; }
-            const from = document.getElementById('currencyFrom').value;
-            const to = document.getElementById('currencyTo').value;
-            const rates = { USD:1, EUR:0.85, GBP:0.75, JPY:110, INR:83, NPR:133 };
-            const fromRate = rates[from];
-            const toRate = rates[to];
-            if (!fromRate || !toRate) { document.getElementById('currencyResult').textContent = 'Invalid currency'; return; }
-            const result = (amount / fromRate) * toRate;
-            document.getElementById('currencyResult').textContent = `${amount} ${from} = ${result.toFixed(2)} ${to}`;
-        });
-
-        // ----- attach events to calculator buttons -----
-        document.querySelectorAll('.btn, .mem-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                const action = this.dataset.action;
-                if (!action) return;
-                playBubble();
-                vibrate();
-                if (this.classList.contains('mem-btn')) {
-                    memoryAction(action);
-                    return;
-                }
-                handleAction(action);
-            });
-        });
-
-        renderHistory();
-        updateDisplay();
-    })();
-</script>
 </body>
-</html>
