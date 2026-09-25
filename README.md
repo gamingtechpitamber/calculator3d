@@ -18,8 +18,7 @@ Calculator3dx
 
 
 
-[🔗 Live Demo github page हेर्नुहोस्](https://gamingtechpitamber.github.io/calculator3dx/)
-
+[🔗 Live Demo github page हेर्नुहोस्](https://gamingtechpitamber.github.io/calculator3d/)
 ## 📞 सम्पर्क
 
 GamingTechPitamber – नेपालको गेमिङ र टेक ब्लग
